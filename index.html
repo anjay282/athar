@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayuk abel</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ayuk Abel</title>
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffe3ec, #ffeaa7);
-      color: #333;
+      background-color: #fff0f5;
       text-align: center;
-      padding: 50px 20px;
+      padding: 30px;
     }
-    h1 {
-      font-size: 48px;
-      color: #d63031;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 18px;
-      margin-top: 0;
-    }
-    .card {
-      background-color: white;
-      max-width: 500px;
-      margin: 30px auto;
-      padding: 25px;
+
+    img {
+      width: 200px;
       border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
       margin-top: 20px;
-      font-size: 16px;
-      background-color: #ff7675;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .flower {
+      font-size: 50px;
+      animation: float 2s infinite;
+      margin: 10px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    button {
+      background-color: #ff69b4;
       color: white;
       border: none;
+      padding: 10px 20px;
+      font-size: 18px;
       border-radius: 8px;
-      text-decoration: none;
-      transition: 0.3s;
+      cursor: pointer;
+      margin-top: 20px;
     }
-    .btn:hover {
-      background-color: #d63031;
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    .tiktok-button {
+      background-color: black;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Selamat Datang, Ayuk! ❤️</h1>
-    <p>Website ini dibuat spesial untuk Ayuk abel~</p>
-    <a href="https://www.tiktok.com/@maybe.yourgirl" class="btn" target="_blank">Lihat TikTok Ayuk</a>
+
+  <h1>Hai Ayuk Abel! 🌸</h1>
+  <img src="IMG_4831.jpeg" alt="Ayuk Abel" />
+
+  <div id="bukaArea">
+    <button onclick="bukaDong()">BUKA DONG</button>
   </div>
+
+  <div id="bungaArea" class="hidden">
+    <div class="flower">🌸🌸🌸🌸🌸</div>
+    <button class="tiktok-button" onclick="window.open('https://www.tiktok.com/@maybe.yourgirl', '_blank')">
+      LIAT TIKTOK
+    </button>
+  </div>
+
+  <script>
+    function bukaDong() {
+      document.getElementById("bungaArea").classList.remove("hidden");
+      document.getElementById("bukaArea").classList.add("hidden");
+    }
+  </script>
+
 </body>
 </html>
