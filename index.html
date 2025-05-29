@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Athar Novendri</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -15,123 +15,143 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #4facfe, #00f2fe);
-      color: #fff;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
       overflow-x: hidden;
     }
 
     header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 40px;
       text-align: center;
-      padding: 60px 20px;
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 20px;
     }
 
     header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-      animation: fadeIn 1.5s ease-out;
+      font-size: 2.5em;
+      font-weight: 600;
     }
 
     header p {
-      font-size: 1.2em;
-      animation: slideUp 2s ease-out;
+      font-size: 1.1em;
+      margin-top: 5px;
+      font-weight: 300;
     }
 
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #fff;
-      margin: 20px auto;
-      display: block;
-      animation: popIn 2s ease;
+    nav {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     section {
-      padding: 40px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      margin: 20px;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      animation: fadeIn 2s ease;
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
     }
 
     section h2 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      color: #fff;
+      font-size: 2em;
+      margin-bottom: 15px;
     }
 
     section p {
       font-size: 1.1em;
-      line-height: 1.6em;
+      line-height: 1.7;
     }
 
     footer {
       text-align: center;
       padding: 30px 20px;
       font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
     }
 
-    .btn {
-      background: #fff;
-      color: #00c6ff;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-      font-weight: bold;
-      transition: 0.3s;
+    audio {
+      display: none;
     }
 
-    .btn:hover {
-      background: #00c6ff;
-      color: white;
-    }
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: center;
+        text-align: left;
+        gap: 40px;
+      }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+      header h1 {
+        font-size: 3em;
+      }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      header p {
+        font-size: 1.2em;
+      }
     }
   </style>
 </head>
 <body>
 
+  <audio autoplay loop>
+    <source src="backsound.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <nav>
+    <a href="#tentang">Tentang</a>
+    <a href="#hobi">Hobi</a>
+    <a href="#sosial">Sosial Media</a>
+  </nav>
+
   <header>
-    <img src="athar.jpg" alt="Foto Athar Novendri" class="profile-img">
-    <h1>Athar Novendri</h1>
-    <p>Siswa MTsN 1 Palembang - Kelas 8</p>
+    <img src="athar.jpg" alt="Foto Athar" />
+    <div>
+      <h1>Athar Novendri</h1>
+      <p>Siswa Kelas VIIIE - MTsN 1 Palembang</p>
+    </div>
   </header>
 
-  <section>
-    <h2>👦 Tentang Saya</h2>
-    <p>Halo! Nama saya Athar Novendri, murid kelas 8 di MTsN 1 Palembang. Saya sangat suka belajar hal baru, terutama teknologi dan seni digital.</p>
+  <section id="tentang">
+    <h2>👋 Tentang Saya</h2>
+    <p>Halo! Nama saya Athar Novendri. Saya adalah seorang siswa MTsN 1 Palembang, sekarang duduk di kelas VIIIE. Saya suka belajar hal-hal baru, terutama tentang teknologi, desain, dan hal-hal kreatif lainnya.</p>
   </section>
 
-  <section>
+  <section id="hobi">
     <h2>🏊‍♂️ Hobi Saya</h2>
-    <p>Saya sangat suka berenang! Selain itu, saya juga senang mendesain, bermain game edukatif, dan membuat web sederhana seperti ini.</p>
+    <p>Hobi utama saya adalah berenang. Saya juga suka membuat desain digital, membuat website seperti ini, dan kadang bermain game edukatif atau coding kecil-kecilan.</p>
   </section>
 
-  <section>
+  <section id="sosial">
     <h2>📱 Sosial Media</h2>
-    <p>Kunjungi juga akun TikTok saya:</p>
-    <a href="https://www.tiktok.com/@maybe.yourgirl" target="_blank" class="btn">Buka TikTok</a>
+    <p>Kunjungi akun TikTok saya untuk melihat hal-hal seru lainnya:</p>
+    <p><a href="https://www.tiktok.com/@atrrrry" target="_blank" style="color: #fff; text-decoration: underline;">@maybe.yourgirl</a></p>
   </section>
 
   <footer>
-    &copy; 2025 Athar Novendri. Dibuat dengan cinta ❤️.
+    &copy; 2025 Athar Novendri..
   </footer>
 
 </body>
