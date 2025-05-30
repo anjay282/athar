@@ -231,75 +231,95 @@
     </ul>
   </section>
 
-  <section id="ai" class="scroll-left">
-    <h2>🤖 Bot Interaktif</h2>
-    <p>Mau tau lebih tentang Athar? Kamu bisa tanya langsung lewat bot di bawah ini! Gunakan kata kunci pertanyaan yang tersedia ya 👇</p>
+ <section id="ai" class="scroll-left">
+  <h2>🤖 Bot Interaktif</h2>
+  <p>Mau tau lebih tentang Athar? Pilih cara nanya di bawah ini ya 👇</p>
 
+  <div style="margin-bottom:15px;">
+    <button onclick="showManualInput()" style="padding:10px 20px; background-color:#a788ff; border:none; color:white; border-radius:5px;">Ketik Manual</button>
+    <button onclick="showKeywordList()" style="padding:10px 20px; margin-left:10px; background:#fff; color:#333; border-radius:5px;">Pilih Pertanyaan</button>
+  </div>
+
+  <div id="manualInput" style="display:none;">
     <input type="text" id="question" placeholder="Tulis pertanyaan di sini..." style="padding:10px; width:100%; margin:10px 0; border-radius:5px;" />
     <button onclick="askBot()" style="padding:10px 20px; background-color:#a788ff; border:none; color:white; border-radius:5px;">Tanya!</button>
-    <button onclick="toggleKataKunci()" style="padding:10px 20px; margin-left:10px; background:#fff; color:#333; border-radius:5px;">Lihat Kata Kunci</button>
+  </div>
 
-    <div id="keywords" style="display:none; background:#111; color:#a0a0a0; padding:15px; border-radius:5px; margin-top:15px;">
-      <strong>❓ Contoh pertanyaan:</strong>
-      <ul style="margin-top:10px;">
-        <li>Siapa nama kamu</li>
-        <li>Sekolah di mana</li>
-        <li>Kelas berapa</li>
-        <li>Hobi kamu</li>
-        <li>Umur kamu</li>
-        <li>Keahlian kamu</li>
-        <li>Tujuan hidup kamu</li>
-      </ul>
-    </div>
+  <div id="keywords" style="display:none; background:#111; color:#a0a0a0; padding:15px; border-radius:5px; margin-top:15px;">
+    <strong>❓ Pilih pertanyaan:</strong>
+    <ul style="margin-top:10px; list-style:none; padding:0;">
+      <li><button onclick="askDirect('warna favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Warna favorit</button></li>
+      <li><button onclick="askDirect('makanan kesukaan')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Makanan kesukaan</button></li>
+      <li><button onclick="askDirect('pelajaran favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Pelajaran favorit</button></li>
+      <li><button onclick="askDirect('cita-cita')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Cita-cita</button></li>
+      <li><button onclick="askDirect('game favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Game favorit</button></li>
+      <li><button onclick="askDirect('hewani favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hewan favorit</button></li>
+      <li><button onclick="askDirect('lagu favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Lagu favorit</button></li>
+      <li><button onclick="askDirect('hobi aneh')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hobi aneh</button></li>
+      <li><button onclick="askDirect('kalau bosan ngapain')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Kalau bosan ngapain</button></li>
+      <li><button onclick="askDirect('belajar coding dari mana')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Belajar coding dari mana</button></li>
+      <li><button onclick="askDirect('game yang sering dimainin dulu')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Game yang sering dimainin dulu</button></li>
+      <li><button onclick="askDirect('pernah bikin project bareng')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Pernah bikin project bareng</button></li>
+      <li><button onclick="askDirect('sering voice discord sama siapa')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Sering voice discord sama siapa</button></li>
+    </ul>
+  </div>
 
-    <div id="answer" style="background:#222; color:white; padding:15px; border-radius:5px; margin-top:20px; min-height:60px;"></div>
-  </section>
+  <div id="answer" style="background:#222; color:white; padding:15px; border-radius:5px; margin-top:20px; min-height:60px;"></div>
+</section>
 
-  <footer>
-    &copy; 2025 Athar Novendri. Web by Athar 💻
-  </footer>
+<script>
+  const memory = {
+    "warna favorit": "Aku suka warna ungu / biru!",
+    "makanan kesukaan": "Aku suka banget sama mie ayam!",
+    "pelajaran favorit": "Pelajaran favoritku IPA dan Bahasa Indonesia.",
+    "cita-cita": "Aku cita-citanya jadi pengusaha sukses!",
+    "game favorit": "Game favoritku GTA V FiveM, SAMP, dan Free Fire.",
+    "hewani favorit": "Aku suka banget sama kucing!",
+    "lagu favorit": "Lagu favoritku 'Mangu'.",
+    "hobi aneh": "Hobi aneh? Banyak banget, wkwk.",
+    "kalau bosan ngapain": "Kalau bosan, biasanya main game.",
+    "belajar coding dari mana": "Belajar coding dari sering voice Discord sama teman orang random, circle GTA, dan para coder yang ngajarin.",
+    "game yang sering dimainin dulu": "Dulu aku sering banget main SAMP tiap malam, rasanya pengen lagi tapi udah ga sempet kayak dulu.",
+    "pernah bikin project bareng": "Pernah! Aku bikin project bareng teman untuk server SAMP. Bikin gamemode dari 0 sampai 1-3 bulan, dan offline-nya ada 20-50 pemain. Tapi sekarang udah ga ada.",
+    "sering voice discord sama siapa": "Sering voice Discord sama teman orang random, circle GTA, dan para coder gitu."
+  };
 
-  <script>
-    const memory = {
-      "siapa nama kamu": "Namaku Athar Novendri!",
-      "sekolah di mana": "Aku sekolah di MTsN 1 Palembang.",
-      "kelas berapa": "Aku kelas VIII-E.",
-      "hobi kamu": "Hobiku berenang, ngoding, dan desain digital.",
-      "umur kamu": "Aku lahir tahun 2011, jadi umurku 13 tahun.",
-      "keahlian kamu": "Aku bisa buat web biodata, web kenangan kelas, dan desain grafis.",
-      "tujuan hidup kamu": "Aku ingin jadi kreator digital yang bisa banggain orang tua dan temen-temen.",
-    };
+  function showManualInput() {
+    document.getElementById("manualInput").style.display = "block";
+    document.getElementById("keywords").style.display = "none";
+    document.getElementById("answer").innerHTML = "";
+  }
 
-    function askBot() {
-      const question = document.getElementById("question").value.toLowerCase();
-      const answerBox = document.getElementById("answer");
-      answerBox.innerHTML = "";
-      const jawab = memory[question] || "Maaf, aku belum ngerti pertanyaan itu 😅";
+  function showKeywordList() {
+    document.getElementById("manualInput").style.display = "none";
+    document.getElementById("keywords").style.display = "block";
+    document.getElementById("answer").innerHTML = "";
+  }
 
-      let i = 0;
-      function typeWriter() {
-        if (i < jawab.length) {
-          answerBox.innerHTML += jawab.charAt(i);
-          i++;
-          setTimeout(typeWriter, 50);
-        }
+  function askBot() {
+    const question = document.getElementById("question").value.toLowerCase();
+    const jawab = memory[question] || "Maaf, aku belum ngerti pertanyaan itu 😅";
+    displayAnswer(jawab);
+  }
+
+  function askDirect(q) {
+    const jawab = memory[q] || "Maaf, aku belum ngerti pertanyaan itu 😅";
+    displayAnswer(jawab);
+  }
+
+  function displayAnswer(jawab) {
+    const answerBox = document.getElementById("answer");
+    answerBox.innerHTML = "";
+    let i = 0;
+    function typeWriter() {
+      if (i < jawab.length) {
+        answerBox.innerHTML += jawab.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
       }
-      typeWriter();
     }
-
-    function toggleKataKunci() {
-      const box = document.getElementById("keywords");
-      box.style.display = box.style.display === "none" ? "block" : "none";
-    }
-
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.scroll-left, .scroll-right').forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          el.style.opacity = 1;
-        }
-      });
-    });
-  </script>
+    typeWriter();
+  }
+</script>
 </body>
 </html>
