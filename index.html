@@ -18,23 +18,13 @@
       background: linear-gradient(135deg, #120136, #1a0040, #240051, #1d003f);
       color: white;
       overflow-x: hidden;
-      position: relative;
-    }
-
-    header, section, footer {
-      animation: fadeIn 1.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 50px 20px 30px;
+      padding: 60px 20px 40px;
       text-align: center;
     }
 
@@ -82,7 +72,7 @@
     }
 
     section {
-      padding: 40px 20px;
+      padding: 60px 20px;
       max-width: 800px;
       margin: auto;
     }
@@ -104,7 +94,7 @@
 
     footer {
       text-align: center;
-      padding: 25px 20px;
+      padding: 30px 20px;
       font-size: 0.9em;
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
@@ -112,22 +102,6 @@
 
     audio {
       display: none;
-    }
-
-    /* Efek bintang (ganti bunga) */
-    .star {
-      position: fixed;
-      top: -10px;
-      left: calc(100% * var(--i));
-      font-size: 16px;
-      color: #a688ff;
-      animation: turunBintang 12s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes turunBintang {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(100vh); opacity: 0; }
     }
 
     @media (min-width: 768px) {
@@ -150,25 +124,20 @@
 </head>
 <body>
 
-  <!-- Suara -->
+  <!-- Backsound -->
   <audio autoplay loop>
     <source src="backsound.mp3" type="audio/mpeg">
     Browser kamu tidak mendukung audio.
   </audio>
 
-  <!-- Efek bintang -->
-  <span class="star" style="--i:0;">★</span>
-  <span class="star" style="--i:0.2;">★</span>
-  <span class="star" style="--i:0.4;">★</span>
-  <span class="star" style="--i:0.6;">★</span>
-  <span class="star" style="--i:0.8;">★</span>
-
+  <!-- Navigasi -->
   <nav>
     <a href="#tentang">Tentang</a>
     <a href="#hobi">Hobi</a>
     <a href="#sosial">Sosial Media</a>
   </nav>
 
+  <!-- Header -->
   <header>
     <img src="athar.jpg" alt="Foto Athar" />
     <div>
@@ -177,22 +146,26 @@
     </div>
   </header>
 
+  <!-- Tentang Saya -->
   <section id="tentang">
     <h2>👋 Tentang Saya</h2>
     <p>Halo! Nama saya Athar Novendri. Saya adalah seorang siswa MTsN 1 Palembang, sekarang duduk di kelas VIIIE. Saya suka belajar hal-hal baru, terutama tentang teknologi, desain, dan hal-hal kreatif lainnya.</p>
   </section>
 
+  <!-- Hobi -->
   <section id="hobi">
     <h2>🏊‍♂️ Hobi Saya</h2>
     <p>Hobi utama saya adalah berenang. Saya juga suka membuat desain digital, membuat website seperti ini, dan kadang bermain game edukatif atau coding kecil-kecilan.</p>
   </section>
 
+  <!-- Sosial Media -->
   <section id="sosial">
     <h2>📱 Sosial Media</h2>
     <p>Kunjungi akun TikTok saya untuk melihat hal-hal seru lainnya:</p>
     <p><a href="https://www.tiktok.com/@atrrrr.y" target="_blank">@atrrrr.y</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 Athar Novendri. 🤷‍♂️
   </footer>
