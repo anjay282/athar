@@ -359,47 +359,6 @@
     }
     typeWriter();
   }
-<!-- ... bagian body lainnya ... -->
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const el = entry.target;
-
-        if (entry.isIntersecting) {
-          if (el.classList.contains('scroll-left')) {
-            el.classList.remove('slideLeftOut');
-            el.classList.add('slideLeftIn');
-          } else if (el.classList.contains('scroll-right')) {
-            el.classList.remove('slideRightOut');
-            el.classList.add('slideRightIn');
-          }
-        } else {
-          const rect = el.getBoundingClientRect();
-          if (rect.top > window.innerHeight || rect.bottom < 0) {
-            if (el.classList.contains('scroll-left')) {
-              el.classList.remove('slideLeftIn');
-              el.classList.add('slideLeftOut');
-            } else if (el.classList.contains('scroll-right')) {
-              el.classList.remove('slideRightIn');
-              el.classList.add('slideRightOut');
-            }
-          }
-        }
-      });
-    }, options);
-
-    document.querySelectorAll('.scroll-left, .scroll-right').forEach(el => {
-      observer.observe(el);
-    });
-  });
 </script>
 </body>
 </html>
