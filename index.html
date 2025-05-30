@@ -15,7 +15,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #120136, #220046, #2c004f, #1d0042);
+      background: linear-gradient(135deg, #120136, #1a0040, #240051, #1d003f);
       color: white;
       overflow-x: hidden;
       position: relative;
@@ -34,7 +34,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px 40px;
+      padding: 50px 20px 30px;
       text-align: center;
     }
 
@@ -58,12 +58,15 @@
     }
 
     nav {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       gap: 30px;
-      padding: 10px 0;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
     nav a {
@@ -75,11 +78,11 @@
 
     nav a:hover {
       text-decoration: underline;
-      color: #ff91f3;
+      color: #b88eff;
     }
 
     section {
-      padding: 60px 20px;
+      padding: 40px 20px;
       max-width: 800px;
       margin: auto;
     }
@@ -95,15 +98,15 @@
     }
 
     section a {
-      color: #ffe0f7;
+      color: #a788ff;
       text-decoration: underline;
     }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
+      padding: 25px 20px;
       font-size: 0.9em;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
     }
 
@@ -111,25 +114,20 @@
       display: none;
     }
 
-    /* Bunga jatuh animasi */
-    .bunga {
+    /* Efek bintang (ganti bunga) */
+    .star {
       position: fixed;
       top: -10px;
       left: calc(100% * var(--i));
-      font-size: 20px;
-      animation: turun 10s linear infinite;
+      font-size: 16px;
+      color: #a688ff;
+      animation: turunBintang 12s linear infinite;
       z-index: 0;
     }
 
-    @keyframes turun {
-      0% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh);
-        opacity: 0;
-      }
+    @keyframes turunBintang {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
     }
 
     @media (min-width: 768px) {
@@ -158,12 +156,12 @@
     Browser kamu tidak mendukung audio.
   </audio>
 
-  <!-- Efek bunga -->
-  <span class="bunga" style="--i:0;">🌸</span>
-  <span class="bunga" style="--i:0.2;">🌸</span>
-  <span class="bunga" style="--i:0.4;">🌸</span>
-  <span class="bunga" style="--i:0.6;">🌸</span>
-  <span class="bunga" style="--i:0.8;">🌸</span>
+  <!-- Efek bintang -->
+  <span class="star" style="--i:0;">★</span>
+  <span class="star" style="--i:0.2;">★</span>
+  <span class="star" style="--i:0.4;">★</span>
+  <span class="star" style="--i:0.6;">★</span>
+  <span class="star" style="--i:0.8;">★</span>
 
   <nav>
     <a href="#tentang">Tentang</a>
