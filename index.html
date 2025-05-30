@@ -137,7 +137,17 @@
       animation: slideRight 1s ease forwards;
       opacity: 0;
     }
-    
+
+    @keyframes slideLeft {
+      from { transform: translateX(-80px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideRight {
+      from { transform: translateX(80px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
     @media (min-width: 768px) {
       header {
         flex-direction: row;
@@ -312,4 +322,4 @@
   }
 </script>
 </body>
-</html>
+</html> nih gabungin jngn ada bagian yh dihalus
