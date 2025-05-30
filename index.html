@@ -1,10 +1,194 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <!-- ... Bagian head tetap sama ... -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Athar Novendri</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #120136, #1a0040, #240051, #1d003f);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 1.1em;
+      margin-top: 5px;
+      font-weight: 300;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #b88eff;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+    }
+
+    section p, section a {
+      font-size: 1.1em;
+      line-height: 1.7;
+    }
+
+    section a {
+      color: #a788ff;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9em;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    audio {
+      display: none;
+    }
+
+    .sosmed-icon {
+      display: inline-block;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sosmed-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+    }
+
+    .sosmed-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .scroll-left {
+      animation: slideLeft 1s ease forwards;
+      opacity: 0;
+    }
+
+    .scroll-right {
+      animation: slideRight 1s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(-80px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideRight {
+      from { transform: translateX(80px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: center;
+        text-align: left;
+        gap: 40px;
+      }
+
+      header h1 {
+        font-size: 3em;
+      }
+
+      header p {
+        font-size: 1.2em;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- ... Bagian nav dan header tetap sama ... -->
+
+  <audio autoplay loop>
+    <source src="backsound.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <nav>
+    <a href="#tentang">Tentang</a>
+    <a href="#hobi">Hobi</a>
+    <a href="#sosial">Sosial Media</a>
+    <a href="#jasa">Jasa</a>
+    <a href="#kenangan">Kenangan</a>
+    <a href="#ai">Bot</a>
+  </nav>
+
+  <header>
+    <img src="athar.jpg" alt="Foto Athar" />
+    <div>
+      <h1>Athar Novendri</h1>
+      <p>Siswa Kelas VIIIE - MTsN 1 Palembang</p>
+    </div>
+  </header>
 
   <section id="tentang" class="scroll-left">
     <h2>👋 Tentang Saya</h2>
@@ -32,11 +216,10 @@
     </div>
   </section>
 
-  <!-- Bagian Jasa Web yang diperbarui -->
   <section id="jasa" class="scroll-right">
-    <h2>💻 Jasa Bikin Web Keren</h2>
-    <p> Aku buka jasa bikin web dengan harga terjangkau seperti: </p>
-    <ul style="margin-top: 15px; line-height: 1.6;">
+    <h2>💼 Jasa Web</h2>
+    <p> Aku buka jasa bikin web dengan harga terjangkau untuk teman-teman pelajar dan siapa saja yang ingin tampil keren di dunia digital. </p>
+    <ul style="margin-top: 15px; line-height: 1.7;">
       <li>📄 Web Biodata Pribadi seperti ini</li>
       <li>🎉 Web Kenangan Kelas / Bestie</li>
       <li>💌 Web Undangan Digital</li>
@@ -44,15 +227,20 @@
       <li>🌐 Tampilan modern dan responsif</li>
       <li>🛠️ Harga mulai dari <strong>Rp35.000</strong></li>
       <li>💬 Minat? Hubungi aku via WhatsApp:
-        <a href="https://wa.me/6282282045700" target="_blank">https://wa.me/6282282045700</a>
+        <a href="https://wa.me/6282282045700" target="_blank">Chat di sini</a>
       </li>
     </ul>
   </section>
 
-  <!-- Bagian AI tetap -->
+  <section id="kenangan" class="scroll-left">
+    <h2>📚 Kenangan Kelas</h2>
+    <p>Selama kelas VIII-E, banyak momen seru dan lucu bareng teman-teman. Dari belajar bareng, main, sampai foto-foto random di kelas. Kenangan ini bakal selalu aku simpan dan jadi bagian berharga dari hidupku.</p>
+  </section>
+
   <section id="ai" class="scroll-right">
     <h2>🤖 Bot Interaktif</h2>
     <p>Mau tau lebih tentang Athar? Kamu bisa tanya langsung lewat bot di bawah ini! Gunakan kata kunci pertanyaan yang tersedia ya 👇</p>
+
     <input type="text" id="question" placeholder="Tulis pertanyaan di sini..." style="padding:10px; width:100%; margin:10px 0; border-radius:5px;" />
     <button onclick="askBot()" style="padding:10px 20px; background-color:#a788ff; border:none; color:white; border-radius:5px;">Tanya!</button>
     <button onclick="toggleKataKunci()" style="padding:10px 20px; margin-left:10px; background:#fff; color:#333; border-radius:5px;">Lihat Kata Kunci</button>
@@ -77,7 +265,6 @@
     &copy; 2025 Athar Novendri. Web by Athar 💻
   </footer>
 
-  <!-- Bagian script tetap -->
   <script>
     const memory = {
       "siapa nama kamu": "Namaku Athar Novendri!",
@@ -94,6 +281,7 @@
       const answerBox = document.getElementById("answer");
       answerBox.innerHTML = "";
       const jawab = memory[question] || "Maaf, aku belum ngerti pertanyaan itu 😅";
+
       let i = 0;
       function typeWriter() {
         if (i < jawab.length) {
