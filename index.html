@@ -104,24 +104,6 @@
       display: none;
     }
 
-    @media (min-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: center;
-        text-align: left;
-        gap: 40px;
-      }
-
-      header h1 {
-        font-size: 3em;
-      }
-
-      header p {
-        font-size: 1.2em;
-      }
-    }
-
-    /* Sosial Media Ikon Glow */
     .sosmed-icon {
       display: inline-block;
       width: 60px;
@@ -145,6 +127,22 @@
       width: 30px;
       height: 30px;
     }
+
+    /* ANIMASI SCROLL */
+    .scroll-left, .scroll-right {
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 0.8s ease-out;
+    }
+
+    .scroll-left {
+      transform: translateX(-100px);
+    }
+
+    .scroll-left.show, .scroll-right.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
   </style>
 </head>
 <body>
@@ -159,8 +157,8 @@
   <nav>
     <a href="#tentang">Tentang</a>
     <a href="#hobi">Hobi</a>
-    <a href="#sosial">Sosial Media</a>
-    <a href="#jasa">Jasa</a>
+    <a href="#sosial">Sosial</a>
+    <a href="#jasa">Jasa Web</a>
   </nav>
 
   <!-- Header -->
@@ -173,19 +171,19 @@
   </header>
 
   <!-- Tentang Saya -->
-  <section id="tentang">
+  <section id="tentang" class="scroll-left">
     <h2>👋 Tentang Saya</h2>
     <p>Halo! Nama saya Athar Novendri. Saya adalah seorang siswa MTsN 1 Palembang, sekarang duduk di kelas VIIIE. Saya suka belajar hal-hal baru, terutama tentang teknologi, desain, dan hal-hal kreatif lainnya.</p>
   </section>
 
   <!-- Hobi -->
-  <section id="hobi">
+  <section id="hobi" class="scroll-right">
     <h2>🏊‍♂️ Hobi Saya</h2>
     <p>Hobi utama saya adalah berenang. Saya juga suka membuat desain digital, membuat website seperti ini, dan kadang bermain game edukatif atau coding kecil-kecilan.</p>
   </section>
 
   <!-- Sosial Media -->
-  <section id="sosial">
+  <section id="sosial" class="scroll-left">
     <h2>📱 Sosial Media</h2>
     <p>Yuk hubungi atau follow aku di media sosial!</p>
     <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
@@ -201,29 +199,44 @@
     </div>
   </section>
 
-  <!-- Jasa Pembuatan Website -->
-  <section id="jasa">
-    <h2>💻 Jasa Pembuatan Web</h2>
-    <p>Pengen punya website sekeren ini? Aku buka jasa pembuatan web dengan harga terjangkau, cocok buat kamu yang pengen:</p>
-    <ul style="margin-top: 15px; padding-left: 20px; line-height: 1.7;">
-      <li>📄 Web Biodata Pribadi</li>
-      <li>🌟 Web Kenangan Kelas </li>
-      <li>👯‍♀️ Web Kenangan Bareng Bestie</li>
-      <li>🎉 Web Undangan Digital</li>
+  <!-- Jasa Web -->
+  <section id="jasa" class="scroll-right">
+    <h2>💻 Jasa Bikin Web Keren</h2>
+    <p>Aku buka jasa bikin web dengan harga terjangkau! Cocok buat kamu yang pengen punya web pribadi atau buat seru-seruan bareng teman-teman.</p>
+    <ul style="margin-top: 15px; line-height: 1.8;">
+      <li>📘 Web Biodata Pribadi seperti ini</li>
+      <li>🎉 Web Kenangan Kelas / Bestie</li>
+      <li>💌 Web Undangan Digital</li>
+      <li>🎵 Bisa pakai backsound & animasi scroll</li>
+      <li>🌐 Tampilan modern dan responsif</li>
+      <li>💸 Harga mulai dari <strong>Rp35.000</strong> aja!</li>
+      <li>💬 Minat? Hubungi aku via WhatsApp:
+        <a href="https://wa.me/6282282045700" target="_blank">klik di sini</a>
+      </li>
     </ul>
-    <p style="margin-top: 15px;">Harga mulai dari <strong style="color:#c09fff;">35 ribu rupiah aja!</strong></p>
-    <p>Kalau minat, langsung aja klik WhatsApp aku di bawah ini ya!</p>
-    <div style="margin-top: 15px;">
-      <a href="https://wa.me/6282282045700" target="_blank" class="sosmed-icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-      </a>
-    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Athar Novendri. 🤷‍♂️
+    &copy; 2025 Athar Novendri.🤷‍♂️. 
   </footer>
+
+  <!-- Script Animasi Scroll -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        } else {
+          entry.target.classList.remove("show");
+        }
+      });
+    });
+
+    document.querySelectorAll(".scroll-left, .scroll-right").forEach((el) => {
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
