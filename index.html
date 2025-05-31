@@ -128,21 +128,14 @@
       height: 30px;
     }
 
-    /* Animasi scroll: default opacity 0 agar tersembunyi */
-    .scroll-left,
-    .scroll-right {
+    .scroll-left {
+      animation: slideLeft 1s ease forwards;
       opacity: 0;
     }
 
-    /* Animasi slide dan visible */
-    .scroll-left.visible {
-      animation: slideLeft 1s ease forwards;
-      opacity: 1 !important;
-    }
-
-    .scroll-right.visible {
+    .scroll-right {
       animation: slideRight 1s ease forwards;
-      opacity: 1 !important;
+      opacity: 0;
     }
 
     @keyframes slideLeft {
@@ -267,124 +260,111 @@
       <li><button onclick="askDirect('game favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Game favorit</button></li>
       <li><button onclick="askDirect('hewani favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hewan favorit</button></li>
       <li><button onclick="askDirect('lagu favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Lagu favorit</button></li>
+      <li><button onclick="askDirect('hobi aneh')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hobi aneh</button></li>
+      <li><button onclick="askDirect('kalau bosan ngapain')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Kalau bosan ngapain</button></li>
+      <li><button onclick="askDirect('belajar coding dari mana')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Belajar coding dari mana</button></li>
       <li><button onclick="askDirect('film favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Film favorit</button></li>
+      <li><button onclick="askDirect('makanan berat')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Makanan berat</button></li>
+      <li><button onclick="askDirect('hobimu selain renang')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hobimu selain renang</button></li>
+      <li><button onclick="askDirect('tempat wisata')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Tempat wisata</button></li>
+      <li><button onclick="askDirect('film kartun')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Film kartun</button></li>
+      <li><button onclick="askDirect('moto hidup')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Moto hidup</button></li>
+      <li><button onclick="askDirect('kelas berapa')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Kelas berapa</button></li>
+      <li><button onclick="askDirect('nama lengkap')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Nama lengkap</button></li>
+      <li><button onclick="askDirect('asal')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Asal</button></li>
+      <li><button onclick="askDirect('makanan favorit berat')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Makanan favorit berat</button></li>
+      <li><button onclick="askDirect('lagu favorit berat')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Lagu favorit berat</button></li>
+      <li><button onclick="askDirect('apakah saya cantik')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Apakah saya cantik</button></li>
+      <li><button onclick="askDirect('apakah saya ganteng')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Apakah saya ganteng</button></li>
     </ul>
   </div>
 
-  <div id="answer" style="margin-top: 20px; background:#222; padding:15px; border-radius:5px; min-height:40px; font-style: italic;"></div>
+  <div id="answer" style="margin-top:20px; background:#222; padding:15px; border-radius:5px; min-height:80px; font-size:1.1em; color:#eee;"></div>
 </section>
 
-<footer>
-  &copy; 2025 Athar Novendri - dibuat dengan ❤️ oleh Athar Novendri
-</footer>
-
 <script>
-  // === JAM DIGITAL ===
+  // JAM DIGITAL
   function updateClock() {
-    const clock = document.getElementById('clock');
     const now = new Date();
-    let h = now.getHours().toString().padStart(2,'0');
-    let m = now.getMinutes().toString().padStart(2,'0');
-    let s = now.getSeconds().toString().padStart(2,'0');
-    clock.textContent = `⏰ Jam saat ini: ${h}:${m}:${s}`;
+    const timeStr = now.toLocaleTimeString('id-ID', { hour12: false });
+    document.getElementById('clock').textContent = '⏰ Waktu sekarang: ' + timeStr;
   }
   setInterval(updateClock, 1000);
   updateClock();
 
-  // === ANIMASI SCROLL ===
-  function handleScrollAnimation() {
-    const scrollElements = document.querySelectorAll('.scroll-left, .scroll-right');
-    const triggerBottom = window.innerHeight * 0.85;
-
-    scrollElements.forEach(el => {
-      const top = el.getBoundingClientRect().top;
-      if (top < triggerBottom) {
-        el.classList.add('visible');
-      }
-    });
-  }
-
-  window.addEventListener('scroll', handleScrollAnimation);
-  window.addEventListener('load', handleScrollAnimation);
-
-  // === TYPING EFFECT UMUM ===
-  function typingEffect(element, text, speed = 40, callback) {
-    element.textContent = '';
-    let i = 0;
-    function type() {
-      if (i < text.length) {
-        element.textContent += text.charAt(i);
-        i++;
-        setTimeout(type, speed);
-      } else if (callback) {
-        callback();
-      }
-    }
-    type();
-  }
-
-  // === BOT INTERAKTIF ===
-  const botResponses = {
-    'warna favorit': "Warna favorit saya adalah ungu muda yang cerah, karena terasa tenang dan penuh kreativitas.",
-    'makanan kesukaan': "Saya suka banget makan nasi goreng dan es buah segar!",
-    'pelajaran favorit': "Pelajaran favorit saya adalah Matematika dan Bahasa Inggris.",
-    'cita-cita': "Cita-cita saya adalah menjadi seorang programmer handal dan kreatif.",
-    'game favorit': "Game favorit saya adalah Minecraft karena bisa membangun dunia sendiri.",
-    'hewani favorit': "Hewan favorit saya adalah kucing, lucu dan mandiri.",
-    'lagu favorit': "Lagu favorit saya adalah lagu-lagu chill seperti Lo-Fi dan jazz.",
-    'film favorit': "Film favorit saya adalah film animasi dan sci-fi seperti 'Big Hero 6' dan 'Interstellar'."
-  };
+  // Mode input yang aktif: 'manual' atau 'keyword'
+  let activeMode = null;
 
   function showManualInput() {
+    activeMode = 'manual';
     document.getElementById('manualInput').style.display = 'block';
     document.getElementById('keywords').style.display = 'none';
     document.getElementById('answer').textContent = '';
-    document.getElementById('question').value = '';
   }
 
   function showKeywordList() {
+    activeMode = 'keyword';
     document.getElementById('keywords').style.display = 'block';
     document.getElementById('manualInput').style.display = 'none';
     document.getElementById('answer').textContent = '';
   }
 
-  function displayAnswer(text) {
-    const answerDiv = document.getElementById('answer');
-    // Pakai efek ketik
-    typingEffect(answerDiv, text, 40);
-  }
-
   function askBot() {
-    const question = document.getElementById('question').value.toLowerCase().trim();
+    let question = '';
+    if (activeMode === 'manual') {
+      question = document.getElementById('question').value.trim().toLowerCase();
+    }
     if (!question) {
-      displayAnswer("Tolong ketik pertanyaan dulu ya...");
+      alert('Tolong tulis pertanyaan terlebih dahulu!');
       return;
     }
+    answerQuestion(question);
+  }
 
-    // Cek jika pertanyaan cocok kata kunci
-    let foundKey = null;
-    for (const key in botResponses) {
-      if (question.includes(key)) {
-        foundKey = key;
-        break;
-      }
-    }
+  function askDirect(q) {
+    answerQuestion(q.toLowerCase());
+  }
 
-    if (foundKey) {
-      displayAnswer(botResponses[foundKey]);
+  function answerQuestion(q) {
+    const answers = {
+      'warna favorit': 'Warna favorit saya adalah ungu dan biru tua.',
+      'makanan kesukaan': 'Saya suka makan nasi goreng dan bakso.',
+      'pelajaran favorit': 'Pelajaran favorit saya adalah matematika dan komputer.',
+      'cita-cita': 'Cita-cita saya adalah menjadi seorang programmer handal.',
+      'game favorit': 'Game favorit saya adalah Mobile Legends dan Minecraft.',
+      'hewani favorit': 'Hewan favorit saya adalah kucing dan burung.',
+      'lagu favorit': 'Lagu favorit saya adalah lagu-lagu pop dan rock Indonesia.',
+      'hobi aneh': 'Hobi aneh saya adalah mengumpulkan stiker dan bermain catur.',
+      'kalau bosan ngapain': 'Kalau bosan, saya biasanya membaca buku atau mendengarkan musik.',
+      'belajar coding dari mana': 'Saya belajar coding dari YouTube dan artikel online.',
+      'film favorit': 'Film favorit saya adalah Marvel Cinematic Universe dan animasi Pixar.',
+      'makanan berat': 'Makanan berat favorit saya adalah rendang dan soto.',
+      'hobimu selain renang': 'Selain renang, saya suka menggambar dan menulis cerita pendek.',
+      'tempat wisata': 'Tempat wisata favorit saya adalah pantai dan pegunungan.',
+      'film kartun': 'Film kartun favorit saya adalah Upin & Ipin dan Spongebob.',
+      'moto hidup': 'Moto hidup saya adalah "Jangan pernah menyerah dan terus belajar."',
+      'kelas berapa': 'Saya sekarang di kelas VIIIE MTsN 1 Palembang.',
+      'nama lengkap': 'Nama lengkap saya Athar Novendri.',
+      'asal': 'Saya berasal dari Palembang, Sumatera Selatan.',
+      'makanan favorit berat': 'Saya sangat suka makan rendang padang.',
+      'lagu favorit berat': 'Saya paling suka lagu “Cinta Luar Biasa” dari Andmesh.',
+      'apakah saya cantik': 'Cantik itu relatif, tapi kamu pasti istimewa! 😊',
+      'apakah saya ganteng': 'Ganteng itu kamu yang menilai, tapi saya yakin kamu keren! 😄',
+    };
+
+    const ans = answers[q];
+    const answerDiv = document.getElementById('answer');
+    if (ans) {
+      answerDiv.textContent = ans;
     } else {
-      displayAnswer("Maaf, saya belum tahu jawaban untuk pertanyaan itu. Coba tanya yang lain ya!");
+      answerDiv.textContent = 'Maaf, saya belum tahu jawaban untuk pertanyaan itu.';
     }
   }
 
-  function askDirect(keyword) {
-    if (botResponses[keyword]) {
-      displayAnswer(botResponses[keyword]);
-    }
-  }
+  // Awal halaman: sembunyikan kedua input
+  document.getElementById('manualInput').style.display = 'none';
+  document.getElementById('keywords').style.display = 'none';
 
-  // Inisialisasi mode awal bot: tampilkan pilihan keyword
-  showKeywordList();
 </script>
 
 </body>
