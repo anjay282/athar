@@ -128,14 +128,21 @@
       height: 30px;
     }
 
-    .scroll-left {
-      animation: slideLeft 1s ease forwards;
+    /* Animasi scroll: default opacity 0 agar tersembunyi */
+    .scroll-left,
+    .scroll-right {
       opacity: 0;
     }
 
-    .scroll-right {
+    /* Animasi slide dan visible */
+    .scroll-left.visible {
+      animation: slideLeft 1s ease forwards;
+      opacity: 1 !important;
+    }
+
+    .scroll-right.visible {
       animation: slideRight 1s ease forwards;
-      opacity: 0;
+      opacity: 1 !important;
     }
 
     @keyframes slideLeft {
@@ -260,91 +267,125 @@
       <li><button onclick="askDirect('game favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Game favorit</button></li>
       <li><button onclick="askDirect('hewani favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hewan favorit</button></li>
       <li><button onclick="askDirect('lagu favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Lagu favorit</button></li>
-      <li><button onclick="askDirect('hobi aneh')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Hobi aneh</button></li>
-      <li><button onclick="askDirect('kalau bosan ngapain')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Kalau bosan ngapain</button></li>
-      <li><button onclick="askDirect('belajar coding dari mana')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Belajar coding dari mana</button></li>
-      <li><button onclick="askDirect('game yang sering dimainin dulu')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Game yang sering dimainin dulu</button></li>
-      <li><button onclick="askDirect('pernah bikin project bareng')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Pernah bikin project bareng</button></li>
-      <li><button onclick="askDirect('sering voice discord sama siapa')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Sering voice discord sama siapa</button></li>
+      <li><button onclick="askDirect('film favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Film favorit</button></li>
     </ul>
   </div>
 
-  <div id="answer" style="background:#222; color:white; padding:15px; border-radius:5px; margin-top:20px; min-height:60px;"></div>
+  <div id="answer" style="margin-top: 20px; background:#222; padding:15px; border-radius:5px; min-height:40px; font-style: italic;"></div>
 </section>
 
+<footer>
+  &copy; 2025 Athar Novendri - dibuat dengan ❤️ oleh Athar Novendri
+</footer>
+
 <script>
-  const memory = {
-    "warna favorit": "Aku suka warna ungu / biru!",
-    "makanan kesukaan": "Aku suka banget sama mie ayam!",
-    "pelajaran favorit": "Pelajaran favoritku IPA dan Bahasa Indonesia.",
-    "cita-cita": "Aku cita-citanya jadi pengusaha sukses!",
-    "game favorit": "Game favoritku GTA V FiveM, SAMP, dan Free Fire.",
-    "hewani favorit": "Aku suka banget sama kucing!",
-    "lagu favorit": "Lagu favoritku 'Mangu'.",
-    "hobi aneh": "Hobi aneh? Banyak banget, wkwk.",
-    "kalau bosan ngapain": "Kalau bosan, biasanya main game.",
-    "belajar coding dari mana": "Belajar coding dari sering voice Discord sama teman orang random, circle GTA, dan para coder yang ngajarin.",
-    "game yang sering dimainin dulu": "Dulu aku sering banget main SAMP tiap malam, rasanya pengen lagi tapi udah ga sempet kayak dulu.",
-    "pernah bikin project bareng": "Pernah! Aku bikin project bareng teman untuk server SAMP. Bikin gamemode dari 0 sampai 1-3 bulan, dan offline-nya ada 20-50 pemain. Tapi sekarang udah ga ada.",
-    "sering voice discord sama siapa": "Sering voice Discord sama teman orang random, circle GTA, dan para coder gitu."
+  // === JAM DIGITAL ===
+  function updateClock() {
+    const clock = document.getElementById('clock');
+    const now = new Date();
+    let h = now.getHours().toString().padStart(2,'0');
+    let m = now.getMinutes().toString().padStart(2,'0');
+    let s = now.getSeconds().toString().padStart(2,'0');
+    clock.textContent = `⏰ Jam saat ini: ${h}:${m}:${s}`;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // === ANIMASI SCROLL ===
+  function handleScrollAnimation() {
+    const scrollElements = document.querySelectorAll('.scroll-left, .scroll-right');
+    const triggerBottom = window.innerHeight * 0.85;
+
+    scrollElements.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < triggerBottom) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScrollAnimation);
+  window.addEventListener('load', handleScrollAnimation);
+
+  // === TYPING EFFECT UMUM ===
+  function typingEffect(element, text, speed = 40, callback) {
+    element.textContent = '';
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
+  // === BOT INTERAKTIF ===
+  const botResponses = {
+    'warna favorit': "Warna favorit saya adalah ungu muda yang cerah, karena terasa tenang dan penuh kreativitas.",
+    'makanan kesukaan': "Saya suka banget makan nasi goreng dan es buah segar!",
+    'pelajaran favorit': "Pelajaran favorit saya adalah Matematika dan Bahasa Inggris.",
+    'cita-cita': "Cita-cita saya adalah menjadi seorang programmer handal dan kreatif.",
+    'game favorit': "Game favorit saya adalah Minecraft karena bisa membangun dunia sendiri.",
+    'hewani favorit': "Hewan favorit saya adalah kucing, lucu dan mandiri.",
+    'lagu favorit': "Lagu favorit saya adalah lagu-lagu chill seperti Lo-Fi dan jazz.",
+    'film favorit': "Film favorit saya adalah film animasi dan sci-fi seperti 'Big Hero 6' dan 'Interstellar'."
   };
 
   function showManualInput() {
-    document.getElementById("manualInput").style.display = "block";
-    document.getElementById("keywords").style.display = "none";
-    document.getElementById("answer").innerHTML = "";
+    document.getElementById('manualInput').style.display = 'block';
+    document.getElementById('keywords').style.display = 'none';
+    document.getElementById('answer').textContent = '';
+    document.getElementById('question').value = '';
   }
 
   function showKeywordList() {
-    document.getElementById("manualInput").style.display = "none";
-    document.getElementById("keywords").style.display = "block";
-    document.getElementById("answer").innerHTML = "";
+    document.getElementById('keywords').style.display = 'block';
+    document.getElementById('manualInput').style.display = 'none';
+    document.getElementById('answer').textContent = '';
+  }
+
+  function displayAnswer(text) {
+    const answerDiv = document.getElementById('answer');
+    // Pakai efek ketik
+    typingEffect(answerDiv, text, 40);
   }
 
   function askBot() {
-    const question = document.getElementById("question").value.toLowerCase();
-    const jawab = memory[question] || "Maaf, aku belum ngerti pertanyaan itu 😅, Tulis pertanyaan sesuai dengan yang ada di pilih pertanyaan";
-    displayAnswer(jawab);
-  }
+    const question = document.getElementById('question').value.toLowerCase().trim();
+    if (!question) {
+      displayAnswer("Tolong ketik pertanyaan dulu ya...");
+      return;
+    }
 
-  function askDirect(q) {
-    const jawab = memory[q] || "Maaf, aku belum ngerti pertanyaan itu 😅";
-    displayAnswer(jawab);
-  }
-
-  function displayAnswer(jawab) {
-    const answerBox = document.getElementById("answer");
-    answerBox.innerHTML = "";
-    let i = 0;
-    function typeWriter() {
-      if (i < jawab.length) {
-        answerBox.innerHTML += jawab.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
+    // Cek jika pertanyaan cocok kata kunci
+    let foundKey = null;
+    for (const key in botResponses) {
+      if (question.includes(key)) {
+        foundKey = key;
+        break;
       }
     }
-    typeWriter();
-  }
-// Fitur Jam Digital
-    function updateClock() {
-      const now = new Date();
-      const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-      const bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 
-      const jam = now.getHours().toString().padStart(2, '0');
-      const menit = now.getMinutes().toString().padStart(2, '0');
-      const detik = now.getSeconds().toString().padStart(2, '0');
-      const hariIni = hari[now.getDay()];
-      const tanggal = now.getDate();
-      const bulanIni = bulan[now.getMonth()];
-      const tahun = now.getFullYear();
-
-      const waktuLengkap = `${hariIni}, ${tanggal} ${bulanIni} ${tahun} — ${jam}:${menit}:${detik}`;
-      document.getElementById("clock").textContent = `⏰ ${waktuLengkap}`;
+    if (foundKey) {
+      displayAnswer(botResponses[foundKey]);
+    } else {
+      displayAnswer("Maaf, saya belum tahu jawaban untuk pertanyaan itu. Coba tanya yang lain ya!");
     }
+  }
 
-    setInterval(updateClock, 1000);
-    updateClock(); // Panggil awal saat load
-  </script>
+  function askDirect(keyword) {
+    if (botResponses[keyword]) {
+      displayAnswer(botResponses[keyword]);
+    }
+  }
+
+  // Inisialisasi mode awal bot: tampilkan pilihan keyword
+  showKeywordList();
+</script>
+
 </body>
 </html>
