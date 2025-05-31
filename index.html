@@ -251,7 +251,7 @@
   </div>
 
   <div id="keywords" style="display:none; background:#111; color:#a0a0a0; padding:15px; border-radius:5px; margin-top:15px;">
-    <strong>❓ Pilih pertanyaan:</strong>
+    <strong>❓ Pilih pertanyaan tentang athar:</strong>
     <ul style="margin-top:10px; list-style:none; padding:0;">
       <li><button onclick="askDirect('warna favorit')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Warna favorit</button></li>
       <li><button onclick="askDirect('makanan kesukaan')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Makanan kesukaan</button></li>
@@ -274,6 +274,7 @@
       <li><button onclick="askDirect('asal')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Asal</button></li>
       <li><button onclick="askDirect('makanan favorit berat')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Makanan favorit berat</button></li>
       <li><button onclick="askDirect('lagu favorit berat')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Lagu favorit berat</button></li>
+      <strong>❓ Pilih pertanyaan random tentang diri anda sendiri:</strong>
       <li><button onclick="askDirect('apakah saya cantik')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Apakah saya cantik</button></li>
       <li><button onclick="askDirect('apakah saya ganteng')" style="background:#a788ff; border:none; color:white; border-radius:5px; padding:5px 10px; margin:5px;">Apakah saya ganteng</button></li>
     </ul>
@@ -357,7 +358,7 @@
     if (ans) {
       answerDiv.textContent = ans;
     } else {
-      answerDiv.textContent = 'Maaf, saya belum tahu jawaban untuk pertanyaan itu.';
+      answerDiv.textContent = 'Maaf, saya belum tahu jawaban untuk pertanyaan itu.Pertanyaan harus sesuai dengan yang ada di pilih pertanyaan';
     }
   }
 
